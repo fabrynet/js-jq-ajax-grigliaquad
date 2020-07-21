@@ -6,7 +6,6 @@
 // Il numero ottenuto appare al centro
 // del quadrato
 
-
 function addListeners () {
   var square = $('.square');
   square.click(getInt);
@@ -18,6 +17,9 @@ function getInt () {
   var compiled = Handlebars.compile(template);
 
   var square = $(this);
+  square.empty();
+  square.removeClass('yellow');
+  square.removeClass('green');
 
   $.ajax({
     url: 'https://flynn.boolean.careers/exercises/api/random/int',
