@@ -17,39 +17,44 @@ function getInt () {
   var compiled = Handlebars.compile(template);
 
   var square = $(this);
-  square.empty();
-  square.removeClass('yellow green');
+  var target = square.find('.target');
+  console.log(target);
+  if (target.length==0) {
+    square.empty();
+    // square.removeClass('yellow green');
 
-  $.ajax({
-    url: 'https://flynn.boolean.careers/exercises/api/random/int',
-    method: 'GET',
-    success: function(data, state) {
-      // console.log(data);
-      var success = data['success'];
-      var int = data['response'];
-      // console.log(int);
-      if (success) {
-        var objInt = {
-          'int': int
-        }
-        if (int <= 5) {
-          square.addClass('yellow');
+    $.ajax({
+      url: 'https://flynn.boolean.careers/exercises/api/random/int',
+      method: 'GET',
+      success: function(data, state) {
+        // console.log(data);
+        var success = data['success'];
+        var int = data['response'];
+        // console.log(int);
+        if (success) {
+          var objInt = {
+            'int': int
+          }
+          if (int <= 5) {
+            square.addClass('yellow');
+          } else {
+            square.addClass('green');
+          }
+          // console.log(objInt);
+          var intHTML = compiled(objInt);
+          square.append(intHTML);
         } else {
-          square.addClass('green');
+          alert('Attenzione ' + success);
         }
-        // console.log(objInt);
-        var intHTML = compiled(objInt);
-        square.append(intHTML);
-      } else {
-        alert('Attenzione ' + success);
-      }
 
-    },
-    error: function(request, state, error) {
-      var error = request['statusText'];
-      alert('Attenzione ' + error);
-    }
-  });
+      },
+      error: function(request, state, error) {
+        var error = request['statusText'];
+        alert('Attenzione ' + error);
+      }
+    });
+  }
+
 }
 
 function init () {
