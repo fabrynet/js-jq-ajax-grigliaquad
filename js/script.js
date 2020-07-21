@@ -18,8 +18,7 @@ function getInt () {
 
   var square = $(this);
   square.empty();
-  square.removeClass('yellow');
-  square.removeClass('green');
+  square.removeClass('yellow green');
 
   $.ajax({
     url: 'https://flynn.boolean.careers/exercises/api/random/int',
