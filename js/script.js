@@ -18,7 +18,7 @@ function getInt () {
 
   var square = $(this);
   var target = square.find('.target');
-  console.log(target);
+
   if (target.length==0) {
     square.empty();
     // square.removeClass('yellow green');
