@@ -39,7 +39,8 @@ ul {
   align-items: center;
 }
 .modal {
-  min-width: 300px;
+  width: 800px;
+  height: 800px;
   background-color: #FC803B;
   border-radius: 10px;
   text-align: center;
@@ -79,12 +80,13 @@ ul {
   display: flex;
 }
 .square {
-  width: 100px;
-  height: 100px;
-  border: 1px solid black;
+  float: left;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: calc(100% / 6);
+  height: calc(100% / 6);
+  border: 1px solid black;
 }
 .square.yellow {
   background-color: yellow;
